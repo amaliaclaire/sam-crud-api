@@ -6,6 +6,21 @@ const getAll = (req, res) => {
   })
 }
 
+const getOne = (req, res) => {
+  const id = req.params.id
+  Artist.getOne(id).then(artist => {
+    res.json(artist)
+  })
+}
+
+const del = (req, res) => {
+  const id = req.params.id
+  Artist.delete(id).then(artists => {
+    const artist = artists[0]
+    res.json(artist)
+  })
+}
+
 module.exports = {
-  getAll
+  getAll, getOne, del
 }

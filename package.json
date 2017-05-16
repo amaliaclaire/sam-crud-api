@@ -6,10 +6,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon app.js",
-    "hi": "echo hi"
+    "knex": "knex"
   },
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "knex": "^0.13.0",
+    "pg": "^6.2.2"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

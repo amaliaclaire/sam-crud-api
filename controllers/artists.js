@@ -1,8 +1,9 @@
 const Artist = require('../models/artist')
 
 const getAll = (req, res) => {
-  const message = Artist.getAll()
-  res.json(message)
+  Artist.getAll().then(artists => {
+    res.json(artists)
+  })
 }
 
 module.exports = {

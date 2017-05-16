@@ -1,10 +1,10 @@
+const db = require('../db')
+
 class Artist {
   constructor () {}
 
   static getAll () {
-    return [
-      { artist_name: 'pablo' }
-    ]
+    return db('artists')
   }
 }
 

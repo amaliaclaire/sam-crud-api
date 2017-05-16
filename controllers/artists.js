@@ -15,12 +15,17 @@ const getOne = (req, res) => {
 
 const del = (req, res) => {
   const id = req.params.id
-  Artist.delete(id).then(artists => {
-    const artist = artists[0]
+  Artist.delete(id).then(([artist]) => {
+    res.json(artist)
+  })
+}
+
+const create = (req, res) => {
+  Artist.create(req.body).then(([artist]) => {
     res.json(artist)
   })
 }
 
 module.exports = {
-  getAll, getOne, del
+  getAll, getOne, del, create
 }

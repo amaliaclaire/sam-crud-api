@@ -1,0 +1,10 @@
+const express = require('express')
+const router = express.Router()
+const ctrl = require('../controllers/artworks')
+
+router.get('/', ctrl.getAll)
+router.get('/:id', ctrl.getOne)
+router.delete('/:id', ctrl.del)
+router.post('/', ctrl.create)
+
+module.exports = router

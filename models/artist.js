@@ -1,10 +1,55 @@
 const db = require('../db')
+const Artwork = require('./artwork')
 
 class Artist {
   constructor () {}
 
   static get (id) {
     return id ? db('artists').where({ id }).first() : db('artists')
+  }
+
+  static populate (id) {
+    if (id) {
+      return db('artists').where({ id }).first().then(artist => {
+        const id = artist.id
+        return Artwork.get().where({ artist_id: id }).then(artworks => {
+          artist.artworks = artworks
+          return artist
+        })
+      })
+
+      // return db('artists')
+      //   .innerJoin('artworks', 'artworks.artist_id', 'artists.id')
+      //   .where('artists.id', id)
+
+      // return Promise.all([
+      //   db('artists').where({ id }).first(),
+      //   Artwork.get().where({ artist_id: id })
+      // ]).then(([artist, artworks]) => {
+      //   artist.artworks = artworks
+      //   return artist
+      // })
+    } else {
+      return db('artists').then(artists => {
+        const promises = artists.map(artist => {
+          return Artwork.get().where({ artist_id: artist.id })
+            .then(artworks => {
+              artist.artworks = artworks
+              return artist
+            })
+        })
+
+        return Promise.all(promises)
+      })
+
+      // return db('artists')
+      //   .innerJoin('artworks', 'artworks.artist_id', 'artists.id')
+
+      // return Promise.all([
+      //   db('artists'),
+      //   Artwork.get()
+      // ])
+    }
   }
 
   static delete (id) {

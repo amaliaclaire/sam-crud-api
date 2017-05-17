@@ -1,14 +1,14 @@
 const Artist = require('../models/artist')
 
 const getAll = (req, res) => {
-  Artist.get().then(artists => {
+  Artist.populate().then(artists => {
     res.json(artists)
   })
 }
 
 const getOne = (req, res) => {
   const id = req.params.id
-  Artist.get(id).then(artist => {
+  Artist.populate(id).then(artist => {
     res.json(artist)
   })
 }

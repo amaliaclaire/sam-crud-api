@@ -26,6 +26,13 @@ const create = (req, res) => {
   })
 }
 
+const update = (req, res) => {
+  const id = req.params.id
+  Artist.update(id, req.body).then(([artist]) => {
+    res.json(artist)
+  })
+}
+
 module.exports = {
-  getAll, getOne, del, create
+  getAll, getOne, del, create, update
 }

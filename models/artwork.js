@@ -15,6 +15,15 @@ class Artwork {
     const artwork = { name, description, year, artist_id }
     return db('artworks').insert(artwork).returning('*')
   }
+
+  static update (id, { name, description, year, artist_id }) {
+    const artwork = { name, description, year, artist_id }
+    for (var key in artwork) {
+      if (artwork[key] === undefined) delete artwork[key]
+    }
+
+    return db('artworks').update(artwork).where({ id }).returning('*')
+  }
 }
 
 module.exports = Artwork

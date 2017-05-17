@@ -8,6 +8,7 @@ const collections = require('./routes/collections')
 
 app.use(require('body-parser').json())
 app.use(require('morgan')('dev'))
+app.use(require('knex-logger')(require('./db')))
 
 app.use('/artists', artists)
 app.use('/artworks', artworks)

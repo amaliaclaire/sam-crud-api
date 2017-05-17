@@ -1,23 +1,5 @@
 exports.seed = (knex) => {
   return knex('artworks').insert([
-    // {
-    //   id: 1,
-    //   first_name: 'Jackson',
-    //   last_name: 'Pollack',
-    //   nationality: 'American'
-    // },
-    // {
-    //   id: 2,
-    //   first_name: 'Francis',
-    //   last_name: 'Picabia',
-    //   nationality: 'French'
-    // },
-    // {
-    //   id: 3,
-    //   first_name: 'Jacob',
-    //   last_name: 'Lawrence',
-    //   nationality: 'American'
-    // }
     {
       id: 1,
       name: 'Sea Change',

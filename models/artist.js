@@ -3,12 +3,8 @@ const db = require('../db')
 class Artist {
   constructor () {}
 
-  static getAll () {
-    return db('artists')
-  }
-
-  static getOne (id) {
-    return db('artists').where({ id }).first()
+  static get (id) {
+    return id ? db('artists').where({ id }).first() : db('artists')
   }
 
   static delete (id) {

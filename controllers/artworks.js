@@ -1,14 +1,14 @@
 const Artwork = require('../models/artwork')
 
 const getAll = (req, res) => {
-  Artwork.getAll().then(artworks => {
+  Artwork.get().then(artworks => {
     res.json(artworks)
   })
 }
 
 const getOne = (req, res) => {
   const id = req.params.id
-  Artwork.getOne(id).then(artwork => {
+  Artwork.get(id).then(artwork => {
     res.json(artwork)
   })
 }
